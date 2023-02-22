@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/contactus.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <style>
+            h1{
+                 font-family: 'Lato';
+            }
+        </style>
+        <Title>Astronomy Ireland</Title>
+        <script>
+            function validate(){
+                let email_val = document.getElementById("email").value;
+                let retypeemail_val = document.getElementById("retypeemail").value;
+                let firstname_val = document.getElementById("firstname").value;
+                let lastname_val = document.getElementById("lastname").value;
+                let number_val = document.getElementById("number").value;
+                
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                const numberPattern = /^[0-9]+$/;
+                
+                if (email_val == "" || email_val == null){
+                    alert("Please enter your email");
+                    return false;
+                }
+                if (retypeemail_val == "" || retypeemail_val == null){
+                    alert("Please enter your email");
+                    return false;
+                }
+                if (firstname_val == "" || firstname_val == null){
+                    alert("Please enter your first name");
+                    return false;
+                }
+                if (lastname_val == "" || lastname_val == null){
+                    alert("Please enter your last name");
+                    return false;
+                }
+                if (number_val == "" || number_val == null){
+                    alert("Please enter your number");
+                    return false;
+                }
+                if (emailPattern.test(email_val)==false){
+                    alert ("Email incorrect format");
+                    return false;
+                }
+                if (numberPattern.test(number_val)==false){
+                    alert ("Age incorrect format");
+                    return false;
+                }
+                if (email_val.localeCompare(retypeemail_val)){
+                    alert("Emails do not match");
+                    return false;
+                }
+                localStorage.setItem("email", email_val);
+                localStorage.setItem("firstname", firstname_val);
+                localStorage.setItem("lastname", lastname_val);
+                localStorage.setItem("number", number_val);
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <img class="Logo-Image" src="Images/Logo.png" alt="Logo">
+                <h1 class="Title">
+                    Astronomy Ireland
+                </h1>
+                <div class="NavBar" id="Top-Nav">
+                    <a href="index.html" class="Nav-Button">Home</a>
+                    <a href="" class="Nav-Button">About</a>
+                    <a href="imageGallery.html" class="Nav-Button">Gallery</a>
+                    <a href="" class="Nav-Button">Events</a>
+                    <a href="contactus.html" class="Nav-Button">Contact</a>
+                    <a href="colourScheme.html" class="Nav-Button">Colour Scheme</a>
+                    <a href="validation.html" class="Nav-Button">Validation</a>
+                    <!--
+                    <div class="Hamburger-Icon">
+                        <a href="javascript:void(0);" class="Hamburger-Icon" onclick="myFunction()">
+                           <div class="Hamburger-Line"></div>
+                           <div class="Hamburger-Line"></div>
+                           <div class="Hamburger-Line"></div>
+                       </a>
+                   </div>
+                   -->
+               </div>
+            </header>
+            <section class="form-container">
+                <p class="prompt">
+                Send us a message
+                </p>
+                <form class="form" id="detailsform" action="contactsent.html" method="get">
+                    <section class="form-left-side">
+                        <p>
+                            <label for="email">Email:</label>
+                        </p>
+                        <p>
+                            <label for="email">Retype Email:</label>
+                        </p>
+                        <p>
+                            <label for="firstname">First Name:</label>
+                        </p>
+                        <p>
+                            <label for="lastname">Last Name:</label>
+                        </p>
+                        <p>
+                            <label for="number">Number:</label>
+                        </p>
+                    </section>
+                    <section class="form-right-side">
+                        <p>
+                        <input name="email" type="email" id="email">
+                        </p>
+                        <p>
+                        <input name="retypeemail" type="email" id="retypeemail">
+                        </p>
+                        <p>
+                        <input name="firstname" type="text" id="firstname">
+                        </p>
+                        <p>
+                        <input name="lastname" type="text" id="lastname">
+                        </p>
+                        <p>
+                        <input name="number" type="text" id="number">
+                        </p>
+                    </section>
+                    <input type="submit" class="submit" id="submit" value="submit">
+                </form>
+            </section>
+            <footer class="footer">
+               <p>Site designed and developed by Fergal O'Grady</p>
+            </footer>           
+        </div>
+        <script>
+            document.getElementById("detailsform").addEventListener("submit", validate);
+        </script>
+    </body>
+</html>

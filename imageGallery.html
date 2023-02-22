@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/imageGallery.css"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <style>
+            h1{
+                 font-family: 'Lato';
+            }
+        </style>
+        <Title>Astronomy Ireland</Title>
+    </head>
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <img class="Logo-Image" src="Images/Logo.png" alt="Logo">
+                <h1 class="Title">
+                    Astronomy Ireland
+                </h1>
+                <div class="NavBar" id="Top-Nav">
+                    <a href="index.html" class="Nav-Button">Home</a>
+                    <a href="" class="Nav-Button">About</a>
+                    <a href="imageGallery.html" class="Nav-Button">Gallery</a>
+                    <a href="" class="Nav-Button">Events</a>
+                    <a href="contactus.html" class="Nav-Button">Contact</a>
+                    <a href="colourScheme.html" class="Nav-Button">Colour Scheme</a>
+                    <a href="validation.html" class="Nav-Button">Validation</a>
+                    <!--
+                    <div class="Hamburger-Icon">
+                        <a href="javascript:void(0);" class="Hamburger-Icon" onclick="myFunction()">
+                           <div class="Hamburger-Line"></div>
+                           <div class="Hamburger-Line"></div>
+                           <div class="Hamburger-Line"></div>
+                       </a>
+                   </div>
+                   -->
+               </div>
+            </header>
+            <h1>Image Gallery</h1>
+            <p class="displayedImage" id = "displayedImage">
+                <img class="image" src="images/imageGallery/pic1.jpg" alt="" id="mainPic">
+            </p>
+            <section class="thumbnailList">
+                <img src="images/imageGallery/thumbnails/pic1-sm.jpg" alt="Milky Way at dawn and silhouette of a telescope." class="Selection-Image" id="1">
+                <!-- Image credit: https://www.istockphoto.com/es/foto/milky-way-al-amanecer-y-silueta-de-un-alcance-gm494497678-77475745?phrase=astronomy -->
+                <img src="images/imageGallery/thumbnails/pic2-sm.jpg" alt="A young boy looking through a telescope at sunset with his father." class="Selection-Image" id="2">
+               <!-- Image credit: https://www.istockphoto.com/es/foto/telescopio-gm512605413-47618778?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic3-sm.jpg" alt="Man sitting under The Milky Way Galaxy with light on his hands." class="Selection-Image" id="3">
+                <!-- Image credit: https://www.istockphoto.com/es/foto/hombre-sentado-en-la-v%C3%ADa-l%C3%A1ctea-gm530185374-93362085?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic4-sm.jpg" alt="Girl looking at the stars with telescope beside her and de-focused city lights." class="Selection-Image" id="4">
+               <!-- Image credit: https://www.istockphoto.com/es/foto/girl-observando-a-la-luz-de-las-estrellas-con-alcance-junto-a-ella-gm636231684-112751337?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic5-sm.jpg" alt="Background of galaxy and stars." class="Selection-Image" id="5">
+                <!-- Image credit: https://www.istockphoto.com/es/foto/fondo-de-galaxia-y-estrellas-gm1035676256-277258896?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic6-sm.jpg" alt="Milky Way. Night sky and silhouette of a standing man." class="Selection-Image" id="6">
+                <!-- Image credit: https://www.istockphoto.com/es/foto/v%C3%ADa-l%C3%A1ctea-cielo-de-la-noche-y-la-silueta-de-un-hombre-de-pie-gm1070687964-286492451?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic7-sm.jpg" alt="Beautiful starry night, man silhouette with a camera looking at the Milky Way galaxy." class="Selection-Image" id="7">
+               <!-- Image credit: https://www.istockphoto.com/es/foto/hermosa-noche-estrellada-silueta-de-hombre-con-una-c%C3%A1mara-mirando-la-galaxia-de-la-gm1148907363-310429771?phrase=astronomy-->
+                <img src="images/imageGallery/thumbnails/pic8-sm.jpg" alt="Milky Way galaxy over observatory." class="Selection-Image" id="8">
+                <!-- Image credit: https://www.istockphoto.com/es/foto/observatorio-bajo-la-galaxia-de-la-v%C3%ADa-lechosa-gm1166629174-321433760?phrase=astronomy-->
+            </section>
+            <section class="nextPrevNav" id="nextPrevNav">
+                <a href="#" id="prevLink">Previous</a>
+                | 
+                <a href="#" id="nextLink">Next</a>
+            </section>
+            <script>
+                var currentImg=1;
+
+                document.getElementById("1").addEventListener("click",loadImage);
+                document.getElementById("2").addEventListener("click",loadImage);
+                document.getElementById("3").addEventListener("click",loadImage);
+                document.getElementById("4").addEventListener("click",loadImage);
+                document.getElementById("5").addEventListener("click",loadImage);
+                document.getElementById("6").addEventListener("click",loadImage);
+                document.getElementById("7").addEventListener("click",loadImage);
+                document.getElementById("8").addEventListener("click",loadImage);
+
+                document.getElementById("prevLink").addEventListener("click",prevLink);
+                document.getElementById("nextLink").addEventListener("click",nextLink);
+                
+                function loadImage(){
+                    imgNum=this.id;
+                    document.getElementById("mainPic").src="images/imageGallery/pic"+imgNum+".jpg";
+                    currentImg=imgNum;
+                }
+                function nextLink(){
+                    if(currentImg==5){
+                        document.getElementById("mainPic").src="images/imageGallery/pic1.jpg";
+                        currentImg=1;
+                    } else{
+                        currentImg++;
+                        document.getElementById("mainPic").src="images/imageGallery/pic"+currentImg+".jpg";
+                    }
+                }
+                function prevLink(){
+                    if(currentImg==1){
+                        document.getElementById("mainPic").src="images/imageGallery/pic8.jpg";
+                        currentImg=5;
+                    }
+                    else{
+                        currentImg--;
+                        document.getElementById("mainPic").src="images/imageGallery/pic"+currentImg+".jpg";
+                    }
+                }
+            </script>
+            <footer class="footer">
+               <p>Site designed and developed by Fergal O'Grady</p>
+            </footer> 
+        </div>
+    </body>
+</html>
